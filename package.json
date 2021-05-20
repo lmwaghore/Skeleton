@@ -1,0 +1,19 @@
+{
+  "name": "skeleton",
+  "version": "1.0.0",
+  "description": "React Skeleton with Babel and Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmwaghore/Skeleton.git"
+  },
+  "author": "Lerroy Mwaghore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lmwaghore/Skeleton/issues"
+  },
+  "homepage": "https://github.com/lmwaghore/Skeleton#readme"
+}
