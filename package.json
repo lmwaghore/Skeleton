@@ -2,9 +2,12 @@
   "name": "skeleton",
   "version": "1.0.0",
   "description": "React Skeleton with Babel and Webpack",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/index.js",
+    "devstart": "nodemon server/index.js",
+    "watch": "webpack -w",
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,25 @@
   "bugs": {
     "url": "https://github.com/lmwaghore/Skeleton/issues"
   },
-  "homepage": "https://github.com/lmwaghore/Skeleton#readme"
+  "homepage": "https://github.com/lmwaghore/Skeleton#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.27.0",
+    "file-loader": "^6.2.0",
+    "prettier": "^2.3.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }
