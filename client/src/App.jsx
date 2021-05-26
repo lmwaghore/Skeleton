@@ -1,14 +1,13 @@
 import React from 'react';
 
-
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {};
   }
 
   render() {
-    return (<div>App goes here</div>)
+    return (<div>App goes here</div>);
   }
 }
 
