@@ -10,10 +10,19 @@ class App extends React.Component {
       clickNum: 0,
     };
     this.socketListener = this.socketListener.bind(this);
+    this.newUserListener = this.newUserListener.bind(this);
   }
 
   componentDidMount() {
+    setTimeout(this.newUserListener, 300);
     setTimeout(this.socketListener, 300);
+  }
+
+  newUserListener() {
+    const { clickNum } = this.state;
+    socket.on('newUser', () => {
+      socket.emit('message', clickNum);
+    });
   }
 
   socketListener() {
@@ -25,13 +34,8 @@ class App extends React.Component {
   }
 
   incrementClick(num) {
+    num++;
     socket.emit('clickIncrement', num);
-    // axios.post('/', { num })
-    // .then((results) => {
-    // this.setState({
-    // clickNum: results.data,
-    // });
-    // });
   }
 
   render() {

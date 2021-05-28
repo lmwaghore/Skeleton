@@ -1888,13 +1888,23 @@ var App = /*#__PURE__*/function (_React$Component) {
       clickNum: 0
     };
     _this.socketListener = _this.socketListener.bind(_assertThisInitialized(_this));
+    _this.newUserListener = _this.newUserListener.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      setTimeout(this.newUserListener, 300);
       setTimeout(this.socketListener, 300);
+    }
+  }, {
+    key: "newUserListener",
+    value: function newUserListener() {
+      var clickNum = this.state.clickNum;
+      socket.on('newUser', function () {
+        socket.emit('message', clickNum);
+      });
     }
   }, {
     key: "socketListener",
@@ -1910,12 +1920,8 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "incrementClick",
     value: function incrementClick(num) {
-      socket.emit('clickIncrement', num); // axios.post('/', { num })
-      // .then((results) => {
-      // this.setState({
-      // clickNum: results.data,
-      // });
-      // });
+      num++;
+      socket.emit('clickIncrement', num);
     }
   }, {
     key: "render",
