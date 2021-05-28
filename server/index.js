@@ -14,6 +14,17 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 // run when new client connects
 io.on('connection', (socket) => {
   console.log('new socket connection made...');
+
+  socket.emit('message', 'welcome');
+
+  socket.on('disconnect', () => {
+    io.emit('message', 'user has left');
+  });
+
+  socket.on('clickIncrement', (num) => {
+    num++;
+    io.emit('message', num);
+  });
 });
 
 app.get('/', (req, res) => {

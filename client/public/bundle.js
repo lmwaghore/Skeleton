@@ -1871,6 +1871,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var socket = io();
 
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
@@ -1886,21 +1887,35 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       clickNum: 0
     };
+    _this.socketListener = _this.socketListener.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
-    key: "incrementClick",
-    value: function incrementClick(num) {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      setTimeout(this.socketListener, 300);
+    }
+  }, {
+    key: "socketListener",
+    value: function socketListener() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/', {
-        num: num
-      }).then(function (results) {
+      socket.on('message', function (message) {
         _this2.setState({
-          clickNum: results.data
+          clickNum: message
         });
       });
+    }
+  }, {
+    key: "incrementClick",
+    value: function incrementClick(num) {
+      socket.emit('clickIncrement', num); // axios.post('/', { num })
+      // .then((results) => {
+      // this.setState({
+      // clickNum: results.data,
+      // });
+      // });
     }
   }, {
     key: "render",
@@ -31826,7 +31841,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var socket = io();
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_App__WEBPACK_IMPORTED_MODULE_2__.default, null), document.getElementById('app'));
 })();
 
